@@ -1,5 +1,9 @@
 package com.registrationform;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+
 public class Model implements Contract.ModelInterface{
 
     private String email;
@@ -17,7 +21,16 @@ public class Model implements Contract.ModelInterface{
 
     @Override
     public void setEmail(String email) throws IllegalEmailFormatException {
-        this.email = email;
+        String patternForEmail ="^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\."
+                + "[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
+        Pattern emailPattern = Pattern.compile(patternForEmail);
+
+        if (!emailPattern.matcher(email).matches()){
+            throw new IllegalEmailFormatException("Malformed email format");
+        }
+        else{
+            this.email = email;
+        }
     }
 
     @Override
@@ -29,4 +42,5 @@ public class Model implements Contract.ModelInterface{
     public String getPassword() {
         return this.password;
     }
+
 }
