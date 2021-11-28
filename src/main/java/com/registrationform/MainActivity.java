@@ -49,7 +49,10 @@ public class MainActivity extends Application implements Contract.MainActivityIn
                             submitLabel.setText("Registration form accepted!");
                         }
                         else if(!emailCheck & !passwordCheck) {
-                            submitLabel.setText("Incorrect Email and Password format\n\nEmail must be of the form:\n\texample@mail.com\nWhere:\n\t- 'example' is the email prefix \n\t- 'mail.com' is the email domain\n\nAnd password must include:\n\t- 7 characters \n\t- 1 letter and digit\n\t- 1 character from *^&@!");
+                            submitLabel.setText("Incorrect Email and Password format\n\nEmail must be of the form:" +
+                                    "\n\texample@mail.com\nWhere:\n\t- 'example' is the email prefix \n\t- 'mail.com'" +
+                                    " is the email domain\n\nAnd password must include:\n\t- 7 characters \n\t" +
+                                    "- 1 letter and digit\n\t- 1 character from *^&@!");
                             emailTextField.setText("");
                             passwordTextField.setText("");
                         }

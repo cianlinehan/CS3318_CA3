@@ -30,7 +30,7 @@ public class Model implements Contract.ModelInterface{
         Pattern emailPattern = Pattern.compile("^([a-zA-Z0-9_\\-.]+)@((\\[[0-9]{1,3}\\" +
                 ".[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$");
 
-        if (!emailPattern.matcher(email).matches()){
+        if (!emailPattern.matcher(email).find()){
             throw new IllegalEmailFormatException("Malformed email format");
         }
         else{
@@ -48,4 +48,12 @@ public class Model implements Contract.ModelInterface{
         return this.password;
     }
 
+    public static void main(String[] args) {
+        Model m = new Model();
+        try {
+            m.setPassword("Cianlinehan2020!");
+        } catch (IllegalPasswordFormatException e) {
+            e.printStackTrace();
+        }
+    }
 }

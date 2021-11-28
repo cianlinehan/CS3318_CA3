@@ -19,13 +19,25 @@ class ModelTest {
     // these are incorrect password and email formats which Model should throw exceptions to
     @ParameterizedTest
     @ValueSource(strings = {"cian", "12345678", "cianlinehan", "cianlinehan1"})
-    void setPassword(String password) {
+    void setIncorrectPassword(String password) {
         assertThrows(IllegalPasswordFormatException.class, () -> model.setPassword(password));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"cianlinehan", "@gmail.com", "cianlinehan@gmail", "cianlinehangmail.com", "cianlinehan@gmailcom"})
-    void setEmail(String email) {
+    void setIncorrectEmail(String email) {
         assertThrows(IllegalEmailFormatException.class, () -> model.setEmail(email));
+    }
+
+    // try to set password and email with correct formats which should return no exceptions/errors
+    @ParameterizedTest
+    @ValueSource(strings = {"Cianlinehan1!", "Linehan2020!", "12345!L"})
+    void setCorrectPassword(String password) {
+        try {
+            model.setPassword(password);
+        } catch (IllegalPasswordFormatException e) {
+            e.printStackTrace();
+            fail();
+        }
     }
 }

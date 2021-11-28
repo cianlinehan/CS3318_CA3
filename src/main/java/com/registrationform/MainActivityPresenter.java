@@ -1,7 +1,5 @@
 package com.registrationform;
 
-//import javax.swing.text.View;
-
 public class MainActivityPresenter implements Contract.MainActivityPresenterInterface {
     private final Model model;
 
@@ -15,7 +13,7 @@ public class MainActivityPresenter implements Contract.MainActivityPresenterInte
         // if format is incorrect, we return true signalling to the View than another attempt must be made for password
         try {
             model.setPassword(password);
-            // return true as we have succesfully set the password
+            // return true as we have successfully set the password
             return true;
         } catch (IllegalPasswordFormatException e) {
             return false;
