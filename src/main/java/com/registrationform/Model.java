@@ -16,7 +16,18 @@ public class Model implements Contract.ModelInterface{
 
     @Override
     public void setPassword(String password) throws IllegalPasswordFormatException {
-        this.password = password;
+        Pattern hasLetterPattern = Pattern.compile("[a-zA-Z]{1,}");
+        Pattern hasDigitPattern = Pattern.compile("[0-9]{1,}");
+        Pattern atLeast7CharsPattern = Pattern.compile("[a-zA-Z0-9]{7,}");
+        Pattern hasSpecialCharacterPattern = Pattern.compile("[^a-z0-9 ]{1,}", Pattern.CASE_INSENSITIVE);
+
+        if(!hasLetterPattern.matcher(password).matches() | !hasDigitPattern.matcher(password).matches() |
+                !atLeast7CharsPattern.matcher(password).matches() | !hasSpecialCharacterPattern.matcher(password).matches()){
+            throw new IllegalPasswordFormatException("Incorrect password format");
+        }
+        else{
+            this.password = password;
+        }
     }
 
     @Override
