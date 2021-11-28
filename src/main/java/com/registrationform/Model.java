@@ -14,8 +14,7 @@ public class Model implements Contract.ModelInterface{
 
     @Override
     public void setPassword(String password) throws IllegalPasswordFormatException {
-        String passwordRegex = "^(?=.*[0-9])(?=.*[A-Za-z])(?=.*[*^&@!])(?=\\\\S+$){7,}";
-        Pattern passwordPattern = Pattern.compile(passwordRegex);
+        Pattern passwordPattern = Pattern.compile("^(?=.*\\d)(?=.*[a-zA-Z])(?=.*[*^&@!]).{7,}$");
 
         if(!passwordPattern.matcher(password).matches()){
             throw new IllegalPasswordFormatException("Incorrect password format");
@@ -46,14 +45,5 @@ public class Model implements Contract.ModelInterface{
     @Override
     public String getPassword() {
         return this.password;
-    }
-
-    public static void main(String[] args) {
-        Model m = new Model();
-        try {
-            m.setPassword("Cianlinehan2020!");
-        } catch (IllegalPasswordFormatException e) {
-            e.printStackTrace();
-        }
     }
 }
