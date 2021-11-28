@@ -14,7 +14,7 @@ public class Model implements Contract.ModelInterface{
 
     @Override
     public void setPassword(String password) throws IllegalPasswordFormatException {
-        String passwordRegex = "^(?=.*[0-9])(?=.*[A-Za-z])(?=.*[*^&@!])(?=\\\\S+$).{7,}$";
+        String passwordRegex = "^(?=.*[0-9])(?=.*[A-Za-z])(?=.*[*^&@!])(?=\\\\S+$){7,}";
         Pattern passwordPattern = Pattern.compile(passwordRegex);
 
         if(!passwordPattern.matcher(password).matches()){
