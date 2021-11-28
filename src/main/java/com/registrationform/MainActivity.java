@@ -15,9 +15,12 @@ import javafx.stage.Stage;
 public class MainActivity extends Application implements Contract.MainActivityInterface {
 
     MainActivityPresenter myPresenter = new MainActivityPresenter();
+    Stage stage;
 
     @Override
     public void start(Stage stage) throws Exception {
+
+        this.stage = stage;
 
         Label emailLabel = new Label("Email");
         Label passwordLabel = new Label("Password");
@@ -76,7 +79,6 @@ public class MainActivity extends Application implements Contract.MainActivityIn
 
     @Override
     public void onDestroy() {
-
+        stage.close();
     }
-
 }

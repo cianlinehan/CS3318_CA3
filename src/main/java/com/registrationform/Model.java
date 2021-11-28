@@ -11,15 +11,13 @@ public class Model implements Contract.ModelInterface{
     }
 
     @Override
-    public Boolean setPassword(String password) {
+    public void setPassword(String password) throws IllegalPasswordFormatException {
         this.password = password;
-        return true;
     }
 
     @Override
-    public Boolean setEmail(String email) {
+    public void setEmail(String email) throws IllegalEmailFormatException {
         this.email = email;
-        return true;
     }
 
     @Override
