@@ -1,7 +1,5 @@
 package com.registrationform;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Pattern;
 
 public class Model implements Contract.ModelInterface{
@@ -16,13 +14,10 @@ public class Model implements Contract.ModelInterface{
 
     @Override
     public void setPassword(String password) throws IllegalPasswordFormatException {
-        Pattern hasLetterPattern = Pattern.compile("[a-zA-Z]{1,}");
-        Pattern hasDigitPattern = Pattern.compile("[0-9]{1,}");
-        Pattern atLeast7CharsPattern = Pattern.compile("[a-zA-Z0-9]{7,}");
-        Pattern hasSpecialCharacterPattern = Pattern.compile("[^a-z0-9 ]{1,}", Pattern.CASE_INSENSITIVE);
+        String passwordRegex = "^(?=.*[0-9])(?=.*[A-Za-z])(?=.*[*^&@!])(?=\\\\S+$).{7,}$";
+        Pattern passwordPattern = Pattern.compile(passwordRegex);
 
-        if(!hasLetterPattern.matcher(password).matches() | !hasDigitPattern.matcher(password).matches() |
-                !atLeast7CharsPattern.matcher(password).matches() | !hasSpecialCharacterPattern.matcher(password).matches()){
+        if(!passwordPattern.matcher(password).matches()){
             throw new IllegalPasswordFormatException("Incorrect password format");
         }
         else{
