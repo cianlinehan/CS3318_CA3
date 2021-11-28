@@ -2,14 +2,22 @@ package com.registrationform;
 
 public class Model implements Contract.ModelInterface{
 
-    @Override
-    public void setPassword() {
+    private String email;
+    private String password;
 
+    public Model(){
+        this.email = "";
+        this.password = "";
     }
 
     @Override
-    public void setEmail() {
+    public Boolean setPassword() {
+        return null;
+    }
 
+    @Override
+    public Boolean setEmail() {
+        return null;
     }
 
     @Override
@@ -18,12 +26,7 @@ public class Model implements Contract.ModelInterface{
     }
 
     @Override
-    public Boolean checkPassword() {
-        return null;
-    }
-
-    @Override
-    public Boolean checkEmail() {
+    public String getPassword() {
         return null;
     }
 }

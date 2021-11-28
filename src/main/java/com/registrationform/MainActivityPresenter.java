@@ -1,23 +1,22 @@
 package com.registrationform;
 
-import javax.swing.text.View;
+//import javax.swing.text.View;
 
 public class MainActivityPresenter implements Contract.MainActivityPresenterInterface {
     private Model model;
-    private View view;
 
-    public MainActivityPresenter(View view){
-
+    public MainActivityPresenter(){
+        this.model = new Model();
     }
 
     @Override
-    public void updatePassword() {
-
+    public void updatePassword(String password) {
+        model.setPassword();
     }
 
     @Override
-    public void updateEmail() {
-
+    public void updateEmail(String email) {
+        model.setEmail();
     }
 
 }

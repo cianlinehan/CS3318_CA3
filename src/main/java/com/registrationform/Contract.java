@@ -2,17 +2,16 @@ package com.registrationform;
 
 public interface Contract {
     interface ModelInterface{
-        public void setPassword();
-        public void setEmail();
+        // checks email and password before setting them, true if in acceptable format, false otherwise
+        public Boolean setPassword();
+        public Boolean setEmail();
         public String getEmail();
-        // checks email and password before setting them, True if in acceptable format
-        public Boolean checkPassword();
-        public Boolean checkEmail();
+        public String getPassword();
     }
 
     interface MainActivityPresenterInterface{
-        public void updatePassword();
-        public void updateEmail();
+        public void updatePassword(String password);
+        public void updateEmail(String email);
     }
 
     interface MainActivityInterface{
